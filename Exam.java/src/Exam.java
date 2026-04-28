@@ -15,6 +15,11 @@ public class Exam extends Assessment {
      * @param missed The number of questions missed.
      */
     public Exam(int questions, int missed) {
+        //check division be zero error
+        if (questions <= 0) {
+            throw new ArithmeticException("Questions must be greater than zero.");
+        }
+
         this.numQuestions = questions;
         this.numMissed = missed;
 

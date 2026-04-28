@@ -5,8 +5,8 @@ import javax.swing.JOptionPane;
 
 public class Runner {
 
-        public static void main(String[] args)
-        {
+        public static void main(String[] args){
+        try {
             String input;     // To hold input
             int questions;    // Number of questions
             int missed;       // Number of questions missed
@@ -28,6 +28,13 @@ public class Runner {
             message += "\nThe exam grade is " + exam.getGrade();
             JOptionPane.showMessageDialog(null, message);
 
+    } catch (NumberFormatException e) {
+        // Handles cases where the user types a string of "four" instead of an integer 4
+        JOptionPane.showMessageDialog(null, "Error: Please enter a whole number.");
+    } catch (ArithmeticException e) {
+        // Handles the division by zero error when questions = 0
+        JOptionPane.showMessageDialog(null, "Error: Questions must be greater than zero.");
+    }
             System.exit(0);
         }
     }
